@@ -21,7 +21,7 @@
             [formControl]="emailControl"
             (focus)="this.error=null"
             matInput placeholder=""
-            aria-label="Email field for login"
+            aria-label="Text field for the login email"
           >
           @if (emailControl.invalid) {
           <mat-error translate>MANDATORY_EMAIL</mat-error>
