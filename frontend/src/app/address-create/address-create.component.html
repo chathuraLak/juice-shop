@@ -11,7 +11,11 @@
       <form class="form-container" id="address-form" (ngSubmit)="save()">
         <mat-form-field appearance="outline" color="tertiary">
           <mat-label>{{ 'LABEL_COUNTRY' | translate }}</mat-label>
-          <input [formControl]="countryControl" type="text" [placeholder]="'MANDATORY_COUNTRY' | translate" matInput>
+          <mat-select [formControl]="countryControl" [placeholder]="'MANDATORY_COUNTRY' | translate">
+            @for (country of countries; track country) {
+              <mat-option [value]="country">{{ country }}</mat-option>
+            }
+          </mat-select>
           @if (countryControl.invalid && countryControl.errors.required) {
             <mat-error>
               {{ 'MANDATORY_COUNTRY' | translate }}

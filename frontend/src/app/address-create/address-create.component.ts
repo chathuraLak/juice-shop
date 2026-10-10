@@ -13,6 +13,7 @@ import { SnackBarHelperService } from '../Services/snack-bar-helper.service'
 import { MatIconModule } from '@angular/material/icon'
 import { MatButtonModule } from '@angular/material/button'
 import { MatInputModule } from '@angular/material/input'
+import { MatSelectModule } from '@angular/material/select'
 import { MatFormFieldModule, MatLabel, MatError, MatHint } from '@angular/material/form-field'
 import { MatCardModule } from '@angular/material/card'
 
@@ -21,7 +22,7 @@ import { MatCardModule } from '@angular/material/card'
   selector: 'app-address-create',
   templateUrl: './address-create.component.html',
   styleUrls: ['./address-create.component.scss'],
-  imports: [MatCardModule, TranslateModule, MatFormFieldModule, MatLabel, MatInputModule, FormsModule, ReactiveFormsModule, MatError, MatHint, MatButtonModule, MatIconModule]
+  imports: [MatCardModule, TranslateModule, MatFormFieldModule, MatLabel, MatInputModule, MatSelectModule, FormsModule, ReactiveFormsModule, MatError, MatHint, MatButtonModule, MatIconModule]
 })
 export class AddressCreateComponent implements OnInit {
   private readonly location = inject(Location)
@@ -39,6 +40,7 @@ export class AddressCreateComponent implements OnInit {
   public cityControl: UntypedFormControl = new UntypedFormControl('', [Validators.required])
   public stateControl: UntypedFormControl = new UntypedFormControl()
   public address: any = undefined
+  public countries = ['Germany', 'India', 'Sri Lanka', 'United Kingdom', 'United States']
   public mode = 'create'
   private addressId: string = undefined
 
