@@ -9,6 +9,8 @@
       <h1>{{ 'ADD_NEW_ADDRESS' | translate }}</h1>
 
       <form class="form-container" id="address-form" (ngSubmit)="save()">
+        <p class="step-indicator">Step {{ step }} of 2</p>
+        @if (step === 1) {
         <mat-form-field appearance="outline" color="tertiary">
           <mat-label>{{ 'LABEL_COUNTRY' | translate }}</mat-label>
           <input [formControl]="countryControl" type="text" [placeholder]="'MANDATORY_COUNTRY' | translate" matInput>
@@ -44,6 +46,7 @@
           }
         </mat-form-field>
 
+        } @else {
         <mat-form-field appearance="outline" color="tertiary">
           <mat-label>{{ 'LABEL_ZIP_CODE' | translate }}</mat-label>
           <input #pin [formControl]="pinControl" type="text" [placeholder]="'MANDATORY_ZIP' | translate" matInput>
@@ -95,6 +98,7 @@
           <mat-label>{{ 'LABEL_STATE' | translate }}</mat-label>
           <input [formControl]="stateControl" type="text" [placeholder]="'STATE_PLACEHOLDER' | translate" matInput>
         </mat-form-field>
+        }
 
       <div class="actions">
         <button type="button" mat-stroked-button class="btn-return" (click)="routeToPreviousUrl()">
@@ -102,6 +106,18 @@
           {{ 'LABEL_BACK' | translate }}
         </button>
 
+        @if (step === 1) {
+          <button
+            type="button"
+            id="next-step"
+            mat-raised-button
+            color="primary"
+            class="btn-next-step"
+            [disabled]="countryControl.invalid || nameControl.invalid || numberControl.invalid"
+            (click)="goToAddressStep()">
+            Next
+          </button>
+        } @else {
         <button
           type="submit"
           id="submitButton"
@@ -112,6 +128,7 @@
           <mat-icon>send</mat-icon>
           {{ 'BTN_SUBMIT' | translate }}
         </button>
+        }
       </div>
       </form>
     </div>

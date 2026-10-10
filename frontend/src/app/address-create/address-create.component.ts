@@ -39,6 +39,7 @@ export class AddressCreateComponent implements OnInit {
   public cityControl: UntypedFormControl = new UntypedFormControl('', [Validators.required])
   public stateControl: UntypedFormControl = new UntypedFormControl()
   public address: any = undefined
+  public step = 1
   public mode = 'create'
   private addressId: string = undefined
 
@@ -121,6 +122,10 @@ export class AddressCreateComponent implements OnInit {
     this.addressControl.setValue(address.streetAddress)
     this.cityControl.setValue(address.city)
     this.stateControl.setValue(address.state)
+  }
+
+  goToAddressStep () {
+    this.step = 2
   }
 
   routeToPreviousUrl () {
