@@ -107,7 +107,7 @@
           id="submitButton"
           mat-raised-button
           color="primary"
-          [disabled]="countryControl.invalid || nameControl.invalid || numberControl.invalid || pinControl.invalid || addressControl.invalid || cityControl.invalid"
+          [disabled]="countryControl.invalid || nameControl.invalid || numberControl.invalid || pinControl.invalid || addressControl.invalid || cityControl.invalid || cityControl.value?.length > 6"
           >
           <mat-icon>send</mat-icon>
           {{ 'BTN_SUBMIT' | translate }}
