@@ -74,3 +74,36 @@ mat-error {
 .hint-spacing {
   margin-left: $space-2xs;
 }
+
+.addr-group {
+  border: 0;
+  margin: 0 0 16px;
+  padding: 0;
+}
+
+.addr-group legend {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.addr-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.addr-field input,
+.addr-field textarea {
+  background: transparent;
+  border: 1px solid currentcolor;
+  border-radius: 4px;
+  color: inherit;
+  font: inherit;
+  padding: 10px;
+}
+
+.addr-error {
+  color: #f44336;
+  font-size: 12px;
+}
