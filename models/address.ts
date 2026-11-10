@@ -45,14 +45,15 @@ const AddressModelInit = (sequelize: Sequelize) => {
         type: DataTypes.INTEGER,
         validate: {
           isInt: true,
-          min: 1000000,
+          // national numbers have at least 10 digits
+          min: { args: [1000000000], msg: 'Mobile number must have at least 10 digits' },
           max: 9999999999
         }
       },
       zipCode: {
         type: DataTypes.STRING,
         validate: {
-          len: [1, 8]
+          len: [1, 10]
         }
       },
       streetAddress: {
