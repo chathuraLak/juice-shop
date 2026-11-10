@@ -8,7 +8,7 @@ import { AddressModel } from '../models/address'
 
 export function getAddress () {
   return async (req: Request, res: Response) => {
-    const addresses = await AddressModel.findAll({ where: { UserId: req.body.UserId } })
+    const addresses = await AddressModel.findAll({ where: { UserId: req.body.UserId }, order: [['id', 'ASC']] })
     res.status(200).json({ status: 'success', data: addresses })
   }
 }

@@ -27,6 +27,12 @@ InferCreationAttributes<Address>
   declare country: string
 }
 
+// The nightly export to the logistics partner still uses fixed-width street fields
+const EXPORT_STREET_WIDTH = 16
+
+const normalizeStreet = (value: string): string =>
+  String(value).replace(/\s+/g, ' ').trim().slice(0, EXPORT_STREET_WIDTH)
+
 const AddressModelInit = (sequelize: Sequelize) => {
   Address.init(
     {
@@ -57,6 +63,9 @@ const AddressModelInit = (sequelize: Sequelize) => {
       },
       streetAddress: {
         type: DataTypes.STRING,
+        set (value: unknown) {
+          this.setDataValue('streetAddress', normalizeStreet(String(value)))
+        },
         validate: {
           len: [1, 160]
         }
