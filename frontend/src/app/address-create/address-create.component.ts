@@ -94,7 +94,7 @@ export class AddressCreateComponent implements OnInit {
           this.address = {}
           this.ngOnInit()
           this.resetForm()
-          this.routeToPreviousUrl()
+          void this.router.navigate(['/address/saved'])
           this.translate.get('ADDRESS_ADDED', { city: savedAddress.city }).subscribe({
             next: (addressAdded) => {
               this.snackBarHelperService.open(addressAdded, 'confirmBar')
